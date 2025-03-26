@@ -1,0 +1,666 @@
+gtk_color_scheme = "background:#000000\nforeground:#FFFFFF\nmidtone:#323232\nhighlight:#007DE1\ngreyout:#000000"
+
+style "default" {
+  	fg[NORMAL]				= @foreground
+  	fg[PRELIGHT]			= @foreground # @midtone #list item text(rbox already played)
+  	fg[ACTIVE]				= @foreground  #list item text(highlight)
+  	fg[SELECTED]			= @foreground  #list item text(rbox selected for move)
+  	fg[INSENSITIVE]			= mix(0.5, @foreground, @greyout)
+ 
+  	bg[NORMAL]		 		= @background
+  	bg[PRELIGHT]			= @background   #mix(0.5, @background, @greyout) 
+  	bg[ACTIVE]				= @background   #mix(0.5, @background, @greyout)
+  	bg[SELECTED]			= @highlight  
+  	bg[INSENSITIVE]			= mix(0.5, @background, @greyout)
+
+  	base[NORMAL]			= @midtone	  #color used for waveform display
+  	base[PRELIGHT]			= "#FFFFFF"	  
+  	base[ACTIVE]			= @highlight  #"#FF00FF"	  #red
+  	base[SELECTED]			= @highlight    
+  	base[INSENSITIVE]		= mix(0.5, @midtone, @greyout)
+
+  	text[NORMAL]			= "#F0F0F0"
+  	text[PRELIGHT]			= "#F0F0F0"
+  	text[ACTIVE]			= "#F0F0F0"
+  	text[SELECTED]			= "#F0F0F0"
+  	text[INSENSITIVE]		= "#F0F0F0"
+
+	GtkRange::trough_border = 0
+ 	GtkRange::slider_width = 15
+	GtkRange::stepper_size = 0
+
+  	GtkScrollbar::min_slider_length = 20
+	GtkCheckButton::indicator_size=10
+	GtkCheckMenuItem::indicator_size=10
+	GtkRadioButton::indicator_size=12
+	GtkWidget::focus_line_width = 0
+	
+	GtkNotebook::tab_vborder = 0
+	GtkNotebook::tab_hborder = 0
+	xthickness = 1
+	ythickness = 1
+
+	font_name					= "DejaVu Sans 11"
+
+	NautilusIconContainer::dark_info_color="#262626"
+	NautilusIconContainer::light_info_color="#8f8f8f"
+	NautilusIconContainer::highlight_alpha=200
+	engine "mist" {
+	}
+
+}
+
+style "treeview" = "default" {
+	GtkTreeView::grid_line_width=2
+	GtkTreeView::horizontal_separator = 0
+	GtkTreeView::vertical_separator = 0
+}
+
+style "menubar"		= "default" {
+	engine "pixmap" {
+		image {
+			function	= BOX
+		    state		= NORMAL
+			file		= "bnb-statusbar-darkblue.png"
+			border		= { 0, 0, 0, 0 }
+			stretch		= TRUE
+    	}
+    	image {
+			function	= BOX
+		    state		= ACTIVE
+			file		= "bnb-statusbar-darkblue.png"
+			border		= { 0, 0, 0, 0 }
+			stretch		= TRUE
+    	}
+    	image {
+			function	= BOX
+		    state		= SELECTED
+			file		= "bnb-statusbar-darkblue.png"
+			stretch		= TRUE
+    	}
+    	image {
+			function	= BOX
+		    state		= INSENSITIVE
+			file		= "bnb-statusbar-passive.png"
+			stretch		= TRUE
+    	}
+ 	}
+}
+
+style "progressbar"	= "default"{
+  	engine "pixmap" {
+    	image {
+    	    function        = BOX
+			state 			= INSENSITIVE
+			#recolorable    = TRUE
+			detail			= "trough"
+			file            = "bnb-progressbar-trough-insensitive.png"
+			border          = { 5,5,5,5 }
+			stretch         = TRUE
+    	}
+    	image {
+    	    function        = BOX
+			#recolorable     = TRUE
+			detail			= "trough"
+			file            = "bnb-progressbar-trough.png"
+			border          = { 5,5,5,5 }
+			stretch         = TRUE
+    	}
+    	image {
+	        function        = BOX
+			state 			= INSENSITIVE
+			#recolorable 	= TRUE
+			detail			= "bar"
+			file            = "bnb-progressbar-fill-insensitive.png"
+			border          = { 5,5,5,5 }
+			stretch         = TRUE
+	    }
+		image {
+	        function        = BOX
+			#recolorable 	= TRUE
+			detail			= "bar"
+			file            = "bnb-progressbar-fill.png"
+			border          = { 5,5,5,5 }
+			stretch         = TRUE
+	    }
+	}
+}
+
+style "seperator" = "default" {
+	engine "pixmap" {
+    	image {
+       		function		= VLINE
+       		state 			= INSENSITIVE
+       		file			= "bnb-line-v-insensitive.png"
+			border		= { 0, 0, 0, 0 }
+       		stretch			= TRUE
+    	}
+    	image {
+       		function		= VLINE
+       		recolorable		= TRUE
+       		file			= "bnb-line-v.png"
+			border		= { 0, 0, 0, 0 }
+
+       		stretch			= TRUE
+    	}
+    	image {
+       		function		= HLINE
+       		state 			= INSENSITIVE
+       		file			= "bnb-line-h-insensitive.png"
+			border		= { 0, 0, 0, 0 }
+       		stretch			= TRUE
+    	}
+    	image {
+    	  	function		= HLINE
+    	  	recolorable		= TRUE
+    		file			= "bnb-line-h.png"
+			border		= { 0, 0, 0, 0 }
+      		stretch			= TRUE
+    	}
+	}
+}
+
+style "scrollbar" = "default"{
+  	engine "pixmap" {
+    	image {
+    	    function        = BOX
+			recolorable     = TRUE
+			state			= INSENSITIVE
+			#detail			= "trough"
+			file            = "bnb-progressbar-trough-insensitive.png"
+			border          = { 5,5,5,5 }
+			stretch         = TRUE
+    	}
+    	image {
+    	    function        = BOX
+			recolorable     = TRUE
+			#detail			= "trough"
+			file            = "bnb-progressbar-trough.png"
+			border          = { 5,5,5,5 }
+			stretch         = TRUE
+    	}
+    	image {
+    	    function        = SLIDER
+			recolorable     = TRUE
+			state			= INSENSITIVE
+			file            = "bnb-progressbar-fill-insensitive.png"
+			border          = { 5,5,5,5 }
+			stretch         = TRUE
+    	}
+    	image {
+        	function        = SLIDER
+			recolorable     = TRUE
+			file            = "bnb-progressbar-fill.png"
+			border          = { 5,5,5,5 }
+			stretch         = TRUE
+		}
+    	#image {
+    	    #function        = STEPPER
+			#recolorable     = TRUE
+			#shadow          = NONE
+			#state			= INSENSITIVE
+			#file            = "bnb-progressbar-fill-insensitive.png"
+			#border          = { 5,5,5,5 }
+			#stretch         = TRUE
+		#}
+    	#image {
+    	    #function        = STEPPER
+			#recolorable     = TRUE
+			#state			= PRELIGHT
+			#file            = "bnb-progressbar-fill.png"
+			#border          = { 5,5,5,5 }
+			#stretch         = TRUE
+		#}
+    	#image {
+    	    #function        = STEPPER
+			#recolorable     = TRUE
+			#shadow          = NONE
+			#file            = "bnb-progressbar-fill.png"
+			#border          = { 5,5,5,5 }
+			#stretch         = TRUE
+		#}
+    }
+}
+
+style "toggle_btn" = "default" {
+ 	engine "pixmap" {
+		image {
+    	    function        		= BOX
+			state					= ACTIVE
+			file            		= "Beatkeeper_Green_Filled.png" 
+			border          		= { 3, 3, 3, 3 }
+			stretch         		= TRUE
+    	}
+    	image {
+    	    function        		= BOX
+			state					= INSENSITIVE
+			file            		= "Beatkeeper_Blue_Empty.png" 
+			border          		= { 3, 3, 3, 3 }
+			stretch         		= TRUE
+    	}
+    	image {
+    	    function        		= BOX
+			state					= PRELIGHT
+			file            		= "Beatkeeper_Blue_Filled.png" 
+			border          		= { 3, 3, 3, 3 }
+			stretch         		= TRUE
+    	}
+    	image {
+    	    function        		= BOX
+			recolorable     		= TRUE
+			file            		= "Beatkeeper_Green_Empty.png"
+			border         		 	= { 5,5,5,5 }
+			stretch         		= TRUE
+    	}
+    	
+  	}
+}
+
+style "frame"  {
+	engine "pixmap" {
+		image {
+			function 		= SHADOW
+			state			= INSENSITIVE
+			file 			= "bnb-frame-bg-insensitive.png"
+			border 			= { 1,1,1,1 }
+		}
+		image {
+			function 		= SHADOW
+			file 			= "bnb-frame-bg.png"
+			border 			= { 1,1,1,1 }
+		}	
+	}
+}
+
+style "spin"
+{
+  engine "pixmap" 
+   {
+    image 
+      {
+        function        = BOX
+	recolorable     = TRUE
+	state		= PRELIGHT
+	file            = "button2.png"
+#	border          = { 14,15,14,15 }
+	stretch         = TRUE
+      }
+    image 
+      {
+        function        = BOX
+	recolorable     = TRUE
+	shadow          = IN
+	file            = "button2.png"
+#	border          = { 14,15,14,15 }
+	stretch         = TRUE
+      }
+
+    image 
+      {
+        function        = BOX
+	recolorable     = TRUE
+	state		= INSENSITIVE
+	file            = "button3.png"
+#	border          = { 14,15,14,15 }
+	stretch         = TRUE
+      }
+    image 
+      {
+        function        = BOX
+	recolorable     = TRUE
+	file            = "button1.png"
+#	border          = { 14,15,14,15 }
+	stretch         = TRUE
+      }
+    }
+}
+
+class "GtkSpin*" style "spin"
+
+class "GtkWidget" 					style "default"
+class "GtkScrollbar"				style "scrollbar"
+class "GtkRange" 					style "scrollbar"
+class "GtkProgressBar" 				style "progressbar"
+class "Gtk*Separator"				style "seperator"
+class "GtkMenuBar" 		     	   	style "menubar"
+class "GtkToggleButton"				style "toggle_btn"
+class "GtkFrame"					style "frame"
+class "GtkTreeView"					style "treeview" 
+
+
+##################### DaScratch Specific Styes ##########################
+style "left_ctext"  {
+ 	engine "pixmap" {
+		image {
+    	    function        		= BOX
+			state					= ACTIVE
+			file            		= "bnb-tab-left-highlight.png" 
+			border		= { 0, 0, 0, 0 }
+			stretch         		= TRUE
+    	}
+    	image {
+    	    function        		= BOX
+			state					= INSENSITIVE
+			file            		= "bnb-tab-left-insensitive.png" 
+			border		= { 0, 0, 0, 0 }
+			stretch         		= TRUE
+    	}
+    	image {
+    	    function        		= BOX
+			recolorable     		= TRUE
+			file            		= "bnb-tab-left.png" 
+			border		= { 0, 0, 0, 0 }
+			stretch         		= TRUE
+    	}
+  	}
+}
+
+style "right_ctext"  {
+   engine "pixmap" {
+    image {
+        function        		= BOX
+		state					= ACTIVE
+		file            		= "bnb-tab-right-highlight.png" 
+			border		= { 0, 0, 0, 0 }
+		stretch         		= TRUE
+    }
+    image {
+        function        		= BOX
+		state					= INSENSITIVE
+		file            		= "bnb-tab-right-insensitive.png" 
+			border		= { 0, 0, 0, 0 }
+		stretch         		= TRUE
+    }
+    image {
+        function        		= BOX
+		recolorable     		= TRUE
+		file            		= "bnb-tab-right.png" 
+			border		= { 0, 0, 0, 0 }
+		stretch         		= TRUE
+    }
+  }
+}
+
+style "list_row_odd" = "default"  {
+  	xthickness            		= 10
+  	ythickness            		= 0
+   	GtkButton::inner_border = { 0, 0, 0, 0 }
+   	text[NORMAL]			= "#F0F0F0"
+  	text[PRELIGHT]			= "#F0F0F0"
+  	text[ACTIVE]			= "#F0F0F0"
+  	text[SELECTED]			= "#F0F0F0"
+  	text[INSENSITIVE]		= "#F0F0F0"
+	engine "pixmap" {
+    	image {
+    	    function        		= BOX
+			state					= ACTIVE
+			file            		= "bnb-list-highlight.png" 
+			border          		= { 0, 0, 0, 0 }
+			stretch         		= TRUE
+    	}
+    	image {
+    	    function        		= BOX
+			state					= SELECTED
+			file            		= "bnb-list-grey-selected.png" 
+			border          		= { 0, 0, 0, 0 }
+			stretch         		= TRUE
+    	}
+    	image {
+    	    function        		= BOX
+			state					= INSENSITIVE
+			file            		= "bnb-list-odd-insensitive.png" 
+			border          		= { 0, 0, 0, 0 }
+			stretch         		= TRUE
+    	}
+    	image {
+    	    function        		= BOX
+			recolorable     		= TRUE
+			file            		= "bnb-list-odd.png" 
+			border          		= { 0, 0, 0, 0 }
+			stretch         		= TRUE
+    	}
+  	}	
+}
+
+style "list_row_even" = "default"  {
+  	xthickness            		= 10
+  	ythickness            		= 0
+   	GtkButton::inner_border = { 0, 0, 0, 0 }
+   	text[NORMAL]			= "#F0F0F0"
+  	text[PRELIGHT]			= "#F0F0F0"
+  	text[ACTIVE]			= "#F0F0F0"
+  	text[SELECTED]			= "#F0F0F0"
+  	text[INSENSITIVE]		= "#F0F0F0"
+	engine "pixmap" {
+    	image {
+    	    function        		= BOX
+			state					= ACTIVE
+			file            		= "bnb-list-highlight.png" 
+			border          		= { 0, 0, 0, 0 }
+			stretch         		= TRUE
+    	}
+    	image {
+    	    function        		= BOX
+			state					= SELECTED
+			file            		= "bnb-list-grey-selected.png" 
+			border          		= { 0, 0, 0, 0 }
+			stretch         		= TRUE
+    	}
+    	image {
+    	    function        		= BOX
+			state					= INSENSITIVE
+			file            		= "bnb-list-even-insensitive.png" 
+			border          		= { 0, 0, 0, 0 }
+			stretch         		= TRUE
+    	}
+    	image {
+    	    function        		= BOX
+			recolorable     		= TRUE
+			file            		= "bnb-list-even.png" 
+			border          		= { 0, 0, 0, 0 }
+			stretch         		= TRUE
+    	}
+  	}	
+}
+
+style "pop_up"  {
+	engine "pixmap" {
+		image {
+    	   	function        		= FLAT_BOX
+			recolorable     		= TRUE
+			file            		= "bnb-popup-bg.png" 
+			border          		= { 3, 3, 3, 3 } 
+			stretch         		= TRUE
+    	}
+  	}
+}
+
+style "pbar_disable" {
+	engine "pixmap" {
+    	image {
+    	    function        = BOX
+			#state		    = INSENSITIVE
+			detail			= "trough"
+			file            = "bnb-progressbar-trough-insensitive.png"
+			border          = { 5,5,5,5 }
+			stretch         = TRUE
+	    }
+	    image {
+	        function        = BOX
+			#state			= INSENSITIVE
+			detail			= "bar"
+			file            = "bnb-progressbar-fill-insensitive.png"
+			border          = { 5,5,5,5 }
+			stretch         = TRUE
+	    }
+	}
+}
+
+style "pbar_highlight"	{
+  	engine "pixmap" {
+    	image {
+    	    function        = BOX
+			#recolorable     = TRUE
+			detail			= "trough"
+			file            = "bnb-progressbar-trough.png"
+			border          = { 5,5,5,5 }
+			stretch         = TRUE
+    	}
+    	image {
+	        function        = BOX
+			#recolorable	= TRUE
+			detail			= "bar"
+			file            = "bnb-progressbar-fill-prelight.png"
+			border          = { 5,5,5,5 }
+			stretch         = TRUE
+	    }
+	}
+}
+
+
+style "decka_beat" {
+ 	engine "pixmap" {
+		image {
+    	    function        		= BOX
+			state					= ACTIVE
+			file            		= "Beatkeeper_Green_Filled.png" 
+			border          		= { 3, 3, 3, 3 }
+			stretch         		= TRUE
+    	}
+    	image {
+    	    function        		= BOX
+			state					= INSENSITIVE
+			file            		= "bnb-tab-left-insensitive.png" 
+			border          		= { 3, 3, 3, 3 }
+			stretch         		= TRUE
+    	}
+    	image {
+    	    function        		= BOX
+			recolorable     		= TRUE
+			file            		= "Beatkeeper_Green_Empty.png"
+			border         		 	= { 5,5,5,5 }
+			stretch         		= TRUE
+    	}
+  	}
+}
+
+
+style "deckb_beat" {
+ 	engine "pixmap" {
+		image {
+    	    function        		= BOX
+			state					= ACTIVE
+			file            		= "Beatkeeper_Blue_Filled.png" 
+			border          		= { 3, 3, 3, 3 }
+			stretch         		= TRUE
+    	}
+    	image {
+    	    function        		= BOX
+			state					= INSENSITIVE
+			file            		= "bnb-tab-left-insensitive.png" 
+			border          		= { 3, 3, 3, 3 }
+			stretch         		= TRUE
+    	}
+    	image {
+    	    function        		= BOX
+			recolorable     		= TRUE
+			file            		= "Beatkeeper_Blue_Empty.png"
+			border         		 	= { 5,5,5,5 }
+			stretch         		= TRUE
+    	}
+  	}
+}
+
+
+style "pbar_horizontal" {
+ 	engine "pixmap" {
+		image {
+    	    function        		= BOX
+			state					= ACTIVE
+			file            		= "bnb-progressbar-trough_horiz.png" 
+			border          = { 5,5,5,5 }
+			stretch         		= TRUE
+    	}
+    	image {
+    	    function        		= BOX
+			state					= INSENSITIVE
+			file            		= "bnb-progressbar-trough-insensitive_horiz.png" 
+			border          = { 5,5,5,5 }
+			stretch         		= TRUE
+    	}
+    	image {
+    	    function        = BOX
+			recolorable     = TRUE
+			#detail			= "trough"
+			file            = "bnb-progressbar-trough_horiz.png"
+			border          = { 5,5,5,5 }
+			stretch         = TRUE
+    	}
+    	image {
+    	    function        		= BOX
+			recolorable     		= TRUE
+			file            		= "bnb-progressbar-trough_horiz.png"
+			border         		 	= { 5,5,5,5 }
+			stretch         		= TRUE
+    	}
+    	image {
+    	    function        = SLIDER
+			recolorable     = TRUE
+			state			= INSENSITIVE
+			file            = "bnb-progressbar-fill-insensitive_horiz.png"
+			border          = { 5,5,5,5 }
+			stretch         = TRUE
+    	}
+    	image {
+        	function        = SLIDER
+			recolorable     = TRUE
+			file            = "bnb-progressbar-fill_horiz.png"
+			border          = { 5,5,5,5 }
+			stretch         = TRUE
+		}
+  	}
+}
+
+
+
+style "down_beat" {
+ 	engine "pixmap" {
+		image {
+    	    function        		= BOX
+			state					= ACTIVE
+			file            		= "Beatkeeper_Blue_Filled.png" 
+			border          		= { 3, 3, 3, 3 }
+			stretch         		= TRUE
+    	}
+    	image {
+    	    function        		= BOX
+			state					= INSENSITIVE
+			file            		= "bnb-tab-left-insensitive.png" 
+			border          		= { 3, 3, 3, 3 }
+			stretch         		= TRUE
+    	}
+    	image {
+    	    function        		= BOX
+			recolorable     		= TRUE
+			file            		= "Beatkeeper_Blue_Empty.png"
+			border         		 	= { 5,5,5,5 }
+			stretch         		= TRUE
+    	}
+  	}
+}
+
+
+widget "*.left_context_button"		style "left_ctext"
+widget "*.right_context_button"		style "right_ctext"
+widget "*.list_entry_odd"			style "list_row_odd"
+widget "*.list_entry_even"			style "list_row_even"
+widget "pop_up_window"				style "pop_up"
+widget "*.pbar_insensitive"			style "pbar_disable"
+widget "*.pbar_highlight"			style "pbar_highlight"
+widget "*.down_beat"				style "down_beat"
+widget "*.decka_beat"				style "decka_beat"
+widget "*.deckb_beat"				style "deckb_beat"
+widget "*.pbar_horizontal"			style "pbar_horizontal"
+
+
+#################################################################
